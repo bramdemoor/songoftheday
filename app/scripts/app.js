@@ -20,7 +20,8 @@ var app = angular
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'picardy.fontawesome'
+    'picardy.fontawesome',
+    'ui.bootstrap'
   ])
     .constant('FIREBASE_URL', 'https://fiery-fire-1125.firebaseio.com/');
 
