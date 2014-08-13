@@ -4,7 +4,7 @@ app.controller('SongsCtrl', function($scope, Song, $modal, $log) {
 
     $scope.songs = Song.all;
 
-    $scope.song = { param: '', artist: '', title: '' };
+    $scope.song = { param: '', artist: '', title: '', editing: false };
 
     $scope.submitSong = function() {
         Song.create($scope.song).then(function() {

@@ -7,13 +7,23 @@
     <div ng-repeat="(songId, song) in songs" class="col-lg-4">
         <h4>{{song.title}}<br /><small>{{ song.artist }}</small></h4>
 
-        <iframe width="420" height="315" ng-src="{{song.param | toEmbedLink}}"  frameborder="0" allowfullscreen></iframe>
+        <div ng-hide="editing">
+            <iframe width="420" height="315" ng-src="{{song.param | toEmbedLink}}"  frameborder="0" allowfullscreen></iframe>
 
-        <a href="{{ song.param | toYoutubeLink }}" class="btn btn-default btn-sm"><fa name="youtube" size="2"></fa></a>
-        <a href="#/songs/{{ songId }}" class="btn btn-default btn-sm"><fa name="comments" size="2"></fa></a>
+            <a href="{{ song.param | toYoutubeLink }}" class="btn btn-default btn-sm"><fa name="youtube" size="2"></fa></a>
+            <a href="#/songs/{{ songId }}" class="btn btn-default btn-sm"><fa name="comments" size="2"></fa></a>
 
-        <a class="btn btn-sm btn-warning"><fa name="edit"></fa> Edit</a>
-        <a ng-click="deleteSong(songId)" class="btn btn-sm btn-danger"><fa name="trash-o"></fa> Delete</a>
+            <a class="btn btn-sm btn-warning" ng-click="editing = true"><fa name="edit"></fa> Edit</a>
+            <a ng-click="deleteSong(songId)" class="btn btn-sm btn-danger"><fa name="trash-o"></fa> Delete</a>
+        </div>
+        <div ng-show="editing">
+            <form ng-submit="editing = false">
+                <label>Youtube code:</label><input type="text" ng-model="song.param" placeholder="Youtube code" ng-required /><br />
+                <label>Artist:</label><input type="text" ng-model="song.artist" placeholder="Artist" ng-required /><br />
+                <label>Title:</label><input type="text" ng-model="song.title" placeholder="Title" ng-required /><br />
+                <button class="btn btn-primary">Save</button>
+            </form>
+        </div>
     </div>
 </div>
 
