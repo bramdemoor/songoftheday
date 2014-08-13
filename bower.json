@@ -23,5 +23,13 @@
   "appPath": "app",
   "resolutions": {
     "angular": "1.2.16"
+  },
+  "overrides": {
+    "angular-fontawesome": {
+      "main": "dist/angular-fontawesome.js"
+    },
+    "observe-js": {
+      "main": "src/observe.js"
+    }
   }
 }
