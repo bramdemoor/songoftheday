@@ -17,10 +17,6 @@
     </div>
 </div>
 
-
-
-
-
 <h3>Add a song</h3>
 
 <form ng-submit="submitSong()">
@@ -30,27 +26,15 @@
    <input type="submit" value="Add Song" class="btn btn-success">
 </form>
 
-<h3>Modal test</h3>
-
-<div ng-controller="ModalDemoCtrl">
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a ng-click="selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="yes()">Yes</button>
-            <button class="btn btn-warning" ng-click="no()">No</button>
-        </div>
-    </script>
-
-    <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
-    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
-</div>
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+       <p>Are you sure you want to delete this item {{song}}?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="yes()">Yes</button>
+        <button class="btn btn-warning" ng-click="no()">No</button>
+    </div>
+</script>
