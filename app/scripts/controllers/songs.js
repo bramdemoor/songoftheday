@@ -1,11 +1,10 @@
 'use strict';
 
-app.controller('SongsCtrl', function($scope, Song) {
+app.controller('SongsCtrl', function($scope, Song, $modal, $log) {
 
     $scope.songs = Song.all;
 
-    // NavVfpp-1L4
-    $scope.song = { param: '', artist: '', title: '' };
+    $scope.song = { param: '', artist: '', title: '', editing: false };
 
     $scope.submitSong = function() {
         Song.create($scope.song).then(function() {
@@ -14,6 +13,20 @@ app.controller('SongsCtrl', function($scope, Song) {
     };
 
     $scope.deleteSong = function(songId) {
-        Song.delete(songId);
+
+        $modal.open({
+            templateUrl: 'myModalContent.html',
+            controller: function ($scope, $modalInstance, song) {
+                $scope.song = song;
+                $scope.yes = function () { $modalInstance.close(); };
+                $scope.no = function () { $modalInstance.dismiss('cancel'); };
+            },
+            size: 'sm',
+            resolve: {
+                song: function () { return songId; }
+            }
+        }).result.then(
+            function (selectedItem) { Song.delete(songId); },
+            function () { $log.info('Modal dismissed at: ' + new Date()); });
     };
 });

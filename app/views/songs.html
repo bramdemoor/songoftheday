@@ -7,19 +7,25 @@
     <div ng-repeat="(songId, song) in songs" class="col-lg-4">
         <h4>{{song.title}}<br /><small>{{ song.artist }}</small></h4>
 
-        <iframe width="420" height="315" ng-src="{{song.param | toEmbedLink}}"  frameborder="0" allowfullscreen></iframe>
+        <div ng-hide="editing">
+            <iframe width="420" height="315" ng-src="{{song.param | toEmbedLink}}"  frameborder="0" allowfullscreen></iframe>
 
-        <a href="{{ song.param | toYoutubeLink }}" class="btn btn-default btn-sm"><fa name="youtube" size="2"></fa></a>
-        <a href="#/songs/{{ songId }}" class="btn btn-default btn-sm"><fa name="comments" size="2"></fa></a>
+            <a href="{{ song.param | toYoutubeLink }}" class="btn btn-default btn-sm"><fa name="youtube" size="2"></fa></a>
+            <a href="#/songs/{{ songId }}" class="btn btn-default btn-sm"><fa name="comments" size="2"></fa></a>
 
-        <a class="btn btn-sm btn-warning"><fa name="edit"></fa> Edit</a>
-        <a ng-click="deleteSong(songId)" class="btn btn-sm btn-danger"><fa name="trash-o"></fa> Delete</a>
+            <a class="btn btn-sm btn-warning" ng-click="editing = true"><fa name="edit"></fa> Edit</a>
+            <a ng-click="deleteSong(songId)" class="btn btn-sm btn-danger"><fa name="trash-o"></fa> Delete</a>
+        </div>
+        <div ng-show="editing">
+            <form ng-submit="editing = false">
+                <label>Youtube code:</label><input type="text" ng-model="song.param" placeholder="Youtube code" ng-required /><br />
+                <label>Artist:</label><input type="text" ng-model="song.artist" placeholder="Artist" ng-required /><br />
+                <label>Title:</label><input type="text" ng-model="song.title" placeholder="Title" ng-required /><br />
+                <button class="btn btn-primary">Save</button>
+            </form>
+        </div>
     </div>
 </div>
-
-
-
-
 
 <h3>Add a song</h3>
 
@@ -29,3 +35,16 @@
    <input type="text" ng-model="song.title" placeholder="Title" />
    <input type="submit" value="Add Song" class="btn btn-success">
 </form>
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">I'm a modal!</h3>
+    </div>
+    <div class="modal-body">
+       <p>Are you sure you want to delete this item {{song}}?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="yes()">Yes</button>
+        <button class="btn btn-warning" ng-click="no()">No</button>
+    </div>
+</script>
