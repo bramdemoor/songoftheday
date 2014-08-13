@@ -26,7 +26,7 @@ app.controller('SongsCtrl', function($scope, Song, $modal, $log) {
                 song: function () { return songId; }
             }
         }).result.then(
-            function (selectedItem) { Song.delete(songId); },
+            function () { Song.delete(songId); },
             function () { $log.info('Modal dismissed at: ' + new Date()); });
     };
 });
