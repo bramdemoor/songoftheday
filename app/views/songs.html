@@ -1,0 +1,31 @@
+<h2>Songs</h2>
+
+<fa name="send"></fa>
+
+
+<div class="row">
+    <div ng-repeat="(songId, song) in songs" class="col-lg-4">
+        <h4>{{song.title}}<br /><small>{{ song.artist }}</small></h4>
+
+        <iframe width="420" height="315" ng-src="{{song.param | toEmbedLink}}"  frameborder="0" allowfullscreen></iframe>
+
+        <a href="{{ song.param | toYoutubeLink }}" class="btn btn-default btn-sm"><fa name="youtube" size="2"></fa></a>
+        <a href="#/songs/{{ songId }}" class="btn btn-default btn-sm"><fa name="comments" size="2"></fa></a>
+
+        <a class="btn btn-sm btn-warning"><fa name="edit"></fa> Edit</a>
+        <a ng-click="deleteSong(songId)" class="btn btn-sm btn-danger"><fa name="trash-o"></fa> Delete</a>
+    </div>
+</div>
+
+
+
+
+
+<h3>Add a song</h3>
+
+<form ng-submit="submitSong()">
+   <input type="text" ng-model="song.param" placeholder="Youtube code" />
+   <input type="text" ng-model="song.artist" placeholder="Artist" />
+   <input type="text" ng-model="song.title" placeholder="Title" />
+   <input type="submit" value="Add Song" class="btn btn-success">
+</form>
