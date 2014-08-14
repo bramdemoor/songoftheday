@@ -16,12 +16,12 @@ app.SongsCtrl = app.controller('SongsCtrl', function($scope, Song, $modal, $log)
 
         $modal.open({
             templateUrl: 'myModalContent.html',
-            controller: function ($scope, $modalInstance, songId, song) {
+            controller: ['$scope', '$modalInstance', 'songId', 'song', function ($scope, $modalInstance, songId, song) {
                 $scope.songId = songId;
                 $scope.song = song;
                 $scope.yes = function () { $modalInstance.close(); };
                 $scope.no = function () { $modalInstance.dismiss('cancel'); };
-            },
+            }],
             size: 'sm',
             resolve: {
                 songId: function () { return songId; },
