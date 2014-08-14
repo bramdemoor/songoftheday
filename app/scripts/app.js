@@ -11,19 +11,20 @@
 
 /* global app:true */
 
-var app = angular
-  .module('angSotdApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'firebase',
-    'picardy.fontawesome',
-    'ui.bootstrap'
-  ])
-    .constant('FIREBASE_URL', 'https://fiery-fire-1125.firebaseio.com/');
+var app = angular.module('angSotdApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch',
+  'firebase',
+  'picardy.fontawesome',
+  'ui.bootstrap'
+]);
+
+app.constant('FIREBASE_URL', 'https://fiery-fire-1125.firebaseio.com/');
+app.constant('YOUTUBE_API_KEY', 'AIzaSyAqA4u2d0kYq2sC8JeyVbAP-mj0uHSIUxM');
 
 app.config(function ($routeProvider, $sceDelegateProvider) {
 
