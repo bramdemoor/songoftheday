@@ -8,9 +8,8 @@ describe("SOTD: Testing Modules", function() {
             module = angular.module("angSotdApp");
         });
 
-       it("should be registered", function() {
-
-           expect(true).toBe(true);
+       it("should be defined", function() {
+           expect(module).toBeDefined();
         });
 
     });
