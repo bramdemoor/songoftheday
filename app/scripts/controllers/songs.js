@@ -1,6 +1,6 @@
 'use strict';
 
-app.SongsCtrl = app.controller('SongsCtrl', function($scope, Song, $modal, $log) {
+app.SongsCtrl = app.controller('SongsCtrl', ['$scope', 'Song', '$modal', '$log', function ($scope, Song, $modal, $log) {
 
     $scope.songs = Song.all;
 
@@ -31,4 +31,4 @@ app.SongsCtrl = app.controller('SongsCtrl', function($scope, Song, $modal, $log)
             function () { Song.delete(songId); },
             function () { $log.info('Modal dismissed at: ' + new Date()); });
     };
-});
+}]);
