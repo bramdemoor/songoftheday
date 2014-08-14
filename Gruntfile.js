@@ -337,6 +337,16 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    // Grunt Shell
+    shell: {
+      firebaseDeploy: {
+        command: 'firebase deploy'
+      },
+      firebaseOpen: {
+        command: 'firebase open'
+      }
     }
   });
 
@@ -384,6 +394,12 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('deploy', [
+      'build',
+      'shell:firebaseDeploy',
+      'shell:firebaseOpen'
   ]);
 
   grunt.registerTask('default', [
