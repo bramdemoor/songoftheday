@@ -1,0 +1,12 @@
+<div class="header" ng-controller="NavCtrl" role="navigation">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a></li>
+        <li><a ng-href="#/about">About</a></li>
+    </ul>
+    <h3 class="header__title"><img class="header__image" src="images/logo.svg"> #songoftheday</h3>
+    <ul class="nav navbar-nav navbar-right" ng-show="signedIn()">
+        <li>
+            <a href="#" ng-click="logout()">Logout</a>
+        </li>
+    </ul>
+</div>
