@@ -30,6 +30,7 @@ describe("SOTD: Testing Modules", function() {
             it("should not have I_DO_NOT_EXIST as a dependency", function() {
                 expect(hasModule('I_DO_NOT_EXIST')).toEqual(false);
             });
+
         });
     });
 
