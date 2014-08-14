@@ -12,18 +12,20 @@ app.SongsCtrl = app.controller('SongsCtrl', function($scope, Song, $modal, $log)
         });
     };
 
-    $scope.deleteSong = function(songId) {
+    $scope.deleteSong = function(songId, song) {
 
         $modal.open({
             templateUrl: 'myModalContent.html',
-            controller: function ($scope, $modalInstance, song) {
+            controller: function ($scope, $modalInstance, songId, song) {
+                $scope.songId = songId;
                 $scope.song = song;
                 $scope.yes = function () { $modalInstance.close(); };
                 $scope.no = function () { $modalInstance.dismiss('cancel'); };
             },
             size: 'sm',
             resolve: {
-                song: function () { return songId; }
+                songId: function () { return songId; },
+                song: function () { return song; }
             }
         }).result.then(
             function () { Song.delete(songId); },
