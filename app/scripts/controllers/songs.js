@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SongsCtrl', function($scope, Song, $modal, $log) {
+app.SongsCtrl = app.controller('SongsCtrl', function($scope, Song, $modal, $log) {
 
     $scope.songs = Song.all;
 
