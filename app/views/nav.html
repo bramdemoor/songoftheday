@@ -3,7 +3,12 @@
         <li class="active"><a ng-href="#">Home</a></li>
         <li><a ng-href="#/about">About</a></li>
     </ul>
-    <h3 class="header__title"><img class="header__image" src="images/logo.svg"> #songoftheday</h3>
+    <h3 class="header__title">
+		<a href="/">
+			<img class="header__image" src="images/logo.svg">
+		</a>
+		#songoftheday
+	</h3>
     <ul class="nav navbar-nav navbar-right" ng-show="signedIn()">
         <li>
             <a href="#" ng-click="logout()">Logout</a>
