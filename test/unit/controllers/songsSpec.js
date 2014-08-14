@@ -5,13 +5,29 @@ describe("Unit: Songs Controller", function() {
     it('testje', inject(function($rootScope, $controller) { //injects the dependencies
         var scope = $rootScope.$new();
 
+        var mockSongService = {
+            all: []
+        };
+
         var ctrl = $controller('SongsCtrl', {
-            $scope: scope
-       /*     ,Song: null,
+            $scope: scope,
+            Song: mockSongService,
             $modal: null,
-            $log: null*/
+            $log: null
         });
 
-        expect(true).toBe(true);
+        expect(ctrl).toBeDefined();
+
+        expect(scope.songs).toBeDefined();
+        expect(scope.songs).toBe(mockSongService.all);
+
+        expect(scope.song).toBeDefined();
+        expect(scope.song.editing).toBe(false);
+
+        expect(scope.submitSong).toBeDefined();
+        expect(scope.deleteSong).toBeDefined();
+
+        expect(scope.I_DO_NOT_EXIST).not.toBeDefined();
+
     }))
 });
