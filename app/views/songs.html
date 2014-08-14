@@ -1,7 +1,7 @@
 <h2>Songs</h2>
 
 <div class="row">
-    <div ng-repeat="(songId, song) in songs" class="col-lg-4">
+    <div ng-repeat="(songId, song) in songs" class="col-lg-4 songblock">
         <h4>{{song.title}}<br /><small>{{ song.artist }}</small></h4>
 
         <div ng-hide="editing">

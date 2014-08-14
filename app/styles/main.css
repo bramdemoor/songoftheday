@@ -97,3 +97,15 @@ body {
     font-size:11px;
     color:#bbb;
 }
+
+/* SONG BLOCK */
+
+.songblock.ng-leave {
+    -webkit-transition: 2s linear all; /* Chrome */
+    transition: 2s linear all;
+    opacity: 1;
+}
+
+.songblock.ng-leave.ng-leave-active {
+    opacity: 0;
+}
